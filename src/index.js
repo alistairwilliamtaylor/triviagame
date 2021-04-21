@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { TriviaProvider } from './TriviaContext.js'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TriviaProvider>
+      <App />
+    </TriviaProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
