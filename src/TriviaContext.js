@@ -31,6 +31,7 @@ export function TriviaProvider(props) {
         }
     ])
     
+    // very very very tempted to do the one below with async await syntax
     function getQuestions() {
         axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
             .then(response => {
@@ -65,29 +66,18 @@ export function TriviaProvider(props) {
             })
     }
 
-    function updateScore(correct) {
-        if (correct) {
+    function updateScore(isCorrect) {
+        if (isCorrect) {
             setScore(score + 1)
         }
     }
 
-    // // this function transforms the API result into an array of objects - keys of answerStatus and answerText
-    // const makeAnswerList = (questions) => {
-    //     let newQuestions = [...questions]
-    //     newQuestions.map(question => {
-    //         let correctAnswer = {
-    //             status: correct,
-    //             answer: answer["correct_answer"]
-    //         }
-
-    //     })
-    // }
-
-    // this function needs to fill the array with the ten questions from the axios request
-    // const addQuestions = questions => {
-    //     setQuestions()
-    // }
-
+    function removeQuestion() {
+        let questionCopy = [...questions]
+        questionCopy.shift()
+        console.log(questionCopy)
+        setQuestions(questionCopy)
+    }
     // this function just needs to shift the first item out of the array
     // const removeQuestion = () => {
     //     setQuestions()
@@ -96,7 +86,7 @@ export function TriviaProvider(props) {
 
 
     return (
-        <TriviaContext.Provider value={ { questions, score, updateScore, getQuestions } }>
+        <TriviaContext.Provider value={ { questions, score, updateScore, getQuestions, removeQuestion } }>
             {props.children}
         </TriviaContext.Provider>
     )

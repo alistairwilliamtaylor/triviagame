@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { TriviaContext } from './TriviaContext'
 
 
-export default function GetQuestions() {
+export default function InitializeGame() {
 
     const { getQuestions } = useContext(TriviaContext)
 

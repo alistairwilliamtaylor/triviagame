@@ -3,9 +3,13 @@ import { TriviaContext } from './TriviaContext'
 
 export default function ScoreDisplay() {
 
-    const { score } = useContext(TriviaContext)
+    const { score, questions } = useContext(TriviaContext)
+
+    function questionsAnswered() {
+        return (10 - questions.length)
+    }
 
     return (
-        <span>{`${score}/10`}</span>
+        <span>{score}/{questionsAnswered()}</span>
     )
 }

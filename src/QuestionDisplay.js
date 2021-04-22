@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { TriviaContext } from './TriviaContext.js'
 import AnswerButton from './AnswerButton.js'
 
-export default function() {
+export default function QuestionDisplay() {
 
     const { questions } = useContext(TriviaContext)
 
@@ -16,6 +16,5 @@ export default function() {
                 <AnswerButton key={idx} correct={answer.correct} text={answer.text} />
             ))}
         </section>
-        // then the big idea is to pass the status in as the parameter for the click Handler - then we evaluate true or false
     )
 }

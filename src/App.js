@@ -1,12 +1,12 @@
 import './App.css';
 import QuestionDisplay from './QuestionDisplay.js'
 import ScoreDisplay from './ScoreDisplay.js'
-import GetQuestions from './GetQuestions.js'
+import InitializeGame from './InitializeGame.js'
 
 function App() {
   return (
     <div className="App">
-      <GetQuestions />
+      <InitializeGame />
       <QuestionDisplay />
       <ScoreDisplay />
     </div>
