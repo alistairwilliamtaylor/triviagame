@@ -4,9 +4,9 @@ import { TriviaContext } from './TriviaContext'
 
 export default function InitializeGame() {
 
-    const { getQuestions } = useContext(TriviaContext)
+    const { initializeQuestions } = useContext(TriviaContext)
 
     return (
-        <button onClick={getQuestions}>GET</button>
+        <button onClick={initializeQuestions}>GET</button>
     )
 }

@@ -31,40 +31,46 @@ export function TriviaProvider(props) {
         }
     ])
     
-    // very very very tempted to do the one below with async await syntax
-    function getQuestions() {
-        axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
-            .then(response => {
-                let cleanedQuestionSets = []
-                response.data.results.forEach(apiSet => {
-                    
-                    let answers = []
+    function cleanUp(questionSet) {
 
-                    apiSet.incorrect_answers.forEach(answer => {
-                        let withIncorrect = {
-                            correct: false,
-                            text: answer
-                        }
-                        answers.push(withIncorrect)
-                    })
+        let cleanedQuestionSets = []
+        questionSet.data.results.forEach(apiSet => {
+            
+            let answers = []
 
-                    let withCorrect = {
-                        correct: true,
-                        text: apiSet.correct_answer
-                    }
-
-                    answers.push(withCorrect)
-
-                    cleanedQuestionSets.push(
-                        {
-                            question: apiSet.question, 
-                            answers: answers
-                        })
-                })
-                console.log(cleanedQuestionSets)
-                setQuestions(cleanedQuestionSets)
+            apiSet.incorrect_answers.forEach(answer => {
+                let withIncorrect = {
+                    correct: false,
+                    text: answer
+                }
+                answers.push(withIncorrect)
             })
+
+            let withCorrect = {
+                correct: true,
+                text: apiSet.correct_answer
+            }
+
+            answers.push(withCorrect)
+
+            cleanedQuestionSets.push(
+                {
+                    question: apiSet.question, 
+                    answers: answers
+                })
+        })
+        return cleanedQuestionSets
     }
+
+
+    async function initializeQuestions() {
+        let questionSet = await axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
+
+        let cleanedQuestionSet = cleanUp(questionSet)
+
+        setQuestions(cleanedQuestionSet)
+    }
+    
 
     function updateScore(isCorrect) {
         if (isCorrect) {
@@ -75,18 +81,11 @@ export function TriviaProvider(props) {
     function removeQuestion() {
         let questionCopy = [...questions]
         questionCopy.shift()
-        console.log(questionCopy)
         setQuestions(questionCopy)
     }
-    // this function just needs to shift the first item out of the array
-    // const removeQuestion = () => {
-    //     setQuestions()
-    // }
-
-
 
     return (
-        <TriviaContext.Provider value={ { questions, score, updateScore, getQuestions, removeQuestion } }>
+        <TriviaContext.Provider value={ { questions, score, updateScore, initializeQuestions, removeQuestion } }>
             {props.children}
         </TriviaContext.Provider>
     )
