@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { TriviaProvider } from './TriviaContext.js'
+import { TriviaProvider } from './TriviaContext.js';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <TriviaProvider>
-      <App />
+      <Router>
+          <App />
+      </Router>
     </TriviaProvider>
   </React.StrictMode>,
   document.getElementById('root')

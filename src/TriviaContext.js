@@ -7,29 +7,7 @@ export function TriviaProvider(props) {
 
     const [score, setScore] = useState(0)
 
-    const [questions, setQuestions] = useState([
-        {
-            question: "List the following Iranic empires in chronological order:",
-            answers: [
-                {
-                correct: true,
-                text: "Median, Achaemenid, Parthian, Sassanid"
-                },
-                {
-                correct: false,
-                text: "Median, Achaemenid, Sassanid, Parthian"
-                },
-                {
-                correct: false,
-                text: "Achaemenid, Median, Parthian, Sassanid"
-                },
-                {
-                correct: false,
-                text: "Achaemenid, Median, Sassanid, Parthian"
-                }
-            ]
-        }
-    ])
+    const [questions, setQuestions] = useState([])
     
     function cleanUp(questionSet) {
 
@@ -63,12 +41,10 @@ export function TriviaProvider(props) {
     }
 
 
-    async function initializeQuestions() {
-        let questionSet = await axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
-
-        let cleanedQuestionSet = cleanUp(questionSet)
-
-        setQuestions(cleanedQuestionSet)
+    function initializeQuestions() {
+        axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
+            .then(result => cleanUp(result))
+            .then(result => setQuestions(result)) 
     }
     
 

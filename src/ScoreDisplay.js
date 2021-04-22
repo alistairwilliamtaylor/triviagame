@@ -10,6 +10,6 @@ export default function ScoreDisplay() {
     }
 
     return (
-        <span>{score}/{questionsAnswered()}</span>
+        <span>Score: {score}/{questionsAnswered()}</span>
     )
 }
