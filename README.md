@@ -6,8 +6,9 @@ This project is a good opportunity to improve my skills working with React. By s
 ## Technologies Used
 
 * React Hooks and Context API
+* React Router DOM
 * Axios API Requests
-* Async Await Syntax
+* Promise Chaining
 * CSS
 
 ## Interesting Features
