@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { TriviaContext } from './TriviaContext.js'
+import AnswerButton from './AnswerButton.js'
 
 export default function() {
 
@@ -7,16 +8,14 @@ export default function() {
 
     const currentQuestion = questions[0]
 
-    console.log(currentQuestion)
-
     return (
 
         <section>
-            <span>{currentQuestion.question}</span>
-            <span>{currentQuestion.correct_answer}</span>
-            <span>{currentQuestion.incorrect_answers[0]}</span>
-            <span>{currentQuestion.incorrect_answers[1]}</span>
-            <span>{currentQuestion.incorrect_answers[2]}</span>
+            <h1>{currentQuestion.question}</h1>
+            {currentQuestion.answers.map((answer, idx) => (
+                <AnswerButton key={idx} correct={answer.correct} text={answer.text} />
+            ))}
         </section>
+        // then the big idea is to pass the status in as the parameter for the click Handler - then we evaluate true or false
     )
 }
