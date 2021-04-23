@@ -1,8 +1,8 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import QuestionDisplay from './QuestionDisplay.js'
-import ScoreDisplay from './ScoreDisplay.js'
 import InitializeGame from './InitializeGame.js'
+import ResultDisplay from './ResultDisplay.js'
 
 
 function App() {
@@ -11,10 +11,9 @@ function App() {
       <Switch>
         <Route path='/gameplay'>
           <QuestionDisplay />
-          <ScoreDisplay />
         </Route>
         <Route path='/result'>
-          <ScoreDisplay />
+          <ResultDisplay />
         </Route>
         <Route path='/'>
           <InitializeGame />

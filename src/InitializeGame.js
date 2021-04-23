@@ -5,13 +5,17 @@ import { Redirect } from 'react-router-dom'
 
 export default function InitializeGame() {
 
-    const { initializeQuestions, questions } = useContext(TriviaContext)
+    const { initializeQuestions, gameIsActive } = useContext(TriviaContext)
 
-    if (questions.length > 0) {
+    if (gameIsActive) {
         return <Redirect to='/gameplay' />
     } else {
         return (
-            <button onClick={initializeQuestions}>GET</button>
+            <section>
+                <h1>Welcome to history trivia!</h1>
+                <button onClick={initializeQuestions}>START</button>
+            </section>
+
         )
     }
 }
