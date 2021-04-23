@@ -1,6 +1,7 @@
 import { useState, createContext } from 'react'
 import axios from 'axios'
 import _ from 'lodash'
+import he from 'he'
 
 export const TriviaContext = createContext()
 
@@ -20,7 +21,7 @@ export function TriviaProvider(props) {
             apiSet.incorrect_answers.forEach(answer => {
                 let withIncorrect = {
                     correct: false,
-                    text: answer
+                    text: he.decode(answer)
                 }
                 answers.push(withIncorrect)
             })
@@ -36,7 +37,7 @@ export function TriviaProvider(props) {
 
             cleanedQuestionSets.push(
                 {
-                    question: apiSet.question, 
+                    question: he.decode(apiSet.question), 
                     answers: shuffledAnswers
                 })
         })
