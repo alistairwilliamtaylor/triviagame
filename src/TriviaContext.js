@@ -11,7 +11,9 @@ export function TriviaProvider(props) {
 
     const [questions, setQuestions] = useState([])
 
-    const [gameIsActive, setGameIsActive] = useState(false) 
+    const [gameIsActive, setGameIsActive] = useState(false)
+    
+    const [category, setCategory] = useState('')
     
     function cleanUp(questionSet) {
 
@@ -55,11 +57,23 @@ export function TriviaProvider(props) {
         setGameIsActive(false)
     }
 
-    function initializeQuestions() {
-        axios.get('https://opentdb.com/api.php?amount=10&category=23&type=multiple')
+    function initializeQuestions(category) {
+        setCategory(category)
+        let categoryKey = getCategoryKey(category) 
+        axios.get(`https://opentdb.com/api.php?amount=10&category=${categoryKey}&type=multiple`)
             .then(result => cleanUp(result))
             .then(result => setQuestions(result))
             .then(result => activateGame())
+    }
+
+    function getCategoryKey(categoryName) {
+        const categoryTable = {
+            'History': 23,
+            'Geography': 22,
+            'Computer Science': 18,
+            'Sport': 21
+        }
+        return categoryTable[categoryName]
     }
     
 
@@ -76,7 +90,7 @@ export function TriviaProvider(props) {
     }
 
     return (
-        <TriviaContext.Provider value={ { questions, score, gameIsActive, endGame, updateScore, initializeQuestions, removeQuestion } }>
+        <TriviaContext.Provider value={ { questions, score, gameIsActive, category, endGame, updateScore, initializeQuestions, setGameIsActive, removeQuestion } }>
             {props.children}
         </TriviaContext.Provider>
     )

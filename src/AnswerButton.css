@@ -1,0 +1,25 @@
+.true {
+    background-color: green;
+    opacity: 0.5;
+    color: white;
+}
+
+.false {
+    background-color:red;
+    opacity: 0.3;
+    color: white;
+}
+
+.false:hover, .true:hover {
+  color: white;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.false:hover {
+    background-color: red;
+}
+
+.true:hover {
+    background-color: green;
+}

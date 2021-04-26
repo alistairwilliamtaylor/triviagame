@@ -12,8 +12,12 @@ export default function InitializeGame() {
     } else {
         return (
             <section>
-                <h1>Welcome to history trivia!</h1>
-                <button onClick={initializeQuestions}>START</button>
+                <h1>Welcome to trivia!</h1>
+                <h2>Please choose a topic:</h2>
+                <button onClick={() => initializeQuestions('History')}>History</button>
+                <button onClick={() => initializeQuestions('Computer Science')}>Computer Science</button>
+                <button onClick={() => initializeQuestions('Geography')}>Geography</button>
+                <button onClick={() => initializeQuestions('Sport')}>Sport</button>
             </section>
 
         )
