@@ -1,16 +1,8 @@
-.question_grid {
-    margin-top: 50px;
+.category_options {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     gap: 50px;
     justify-content: space-evenly;
-}
-
-.status_box {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
 }

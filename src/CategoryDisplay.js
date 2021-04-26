@@ -6,8 +6,6 @@ export default function CategoryDisplay() {
     const { category } = useContext(TriviaContext)
 
     return (
-        <div>
             <span>{category}</span>
-        </div>
     )
 }

@@ -14,5 +14,7 @@ This project is a good opportunity to improve my skills working with React. By s
 ## Interesting Features
 At this stage, the app doesn't exist
 
+Needed to manipulate the input from the API, then use lodash to shuffle the answers so that the correct answer wasn't always in the same place. Also came with extended html characters, so used 'he' library to decode into regular text symbols.
+
 ## Future Code Improvements
 Currently, the app runs entirely on the client side, so anyone using Google Chrome with the React Devtools plugin can just look at the button components to find out which answer is correct. This could be addressed by creating a server to interact with the Open Trivia API and my React App, meaning that this information would not be available on the client side. 
