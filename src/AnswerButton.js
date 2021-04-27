@@ -7,7 +7,7 @@ export default function AnswerButton(props) {
     const { updateScore, removeQuestion, gameIsActive, setGameIsActive } = useContext(TriviaContext)
 
     function wait() {
-        return new Promise((resolve, reject) => setTimeout(resolve, 2000))
+        return new Promise((resolve, reject) => setTimeout(resolve, 3000))
     }
 
     function handleGuess(isCorrect) {
