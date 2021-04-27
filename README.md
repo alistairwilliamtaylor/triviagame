@@ -4,7 +4,7 @@
 ![Ternary Question](./images/TernaryTriviaNarrowview.png)
 
 ## Introduction
-This project has been a great opportunity to improve my skills working with React. By sourcing the trivia questions from the Open Trivia DB API, I have been able to focus on working with React to create a reactive, smooth playing experience on the front end.
+This project (https://alistair_trivia_app.surge.sh/) has been a great opportunity to improve my skills working with React. By sourcing the trivia questions from the Open Trivia DB API, I have been able to focus on working with React to create a reactive, smooth playing experience on the front end.
 
 ## Technologies Used
 
